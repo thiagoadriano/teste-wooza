@@ -15,7 +15,8 @@ const gulp = require('gulp'),
 
 const vendorsJS = [
         "./node_modules/angular/angular.js",
-        "./node_modules/angular-route/angular-route.js"
+        "./node_modules/angular-route/angular-route.js",
+        "./node_modules/jquery/dist/jquery.js"
       ],
       vendorsCSS = [
         "./node_modules/bootstrap/dist/css/bootstrap.css",
@@ -27,12 +28,20 @@ const vendorsJS = [
  * Tarefa para rodar um server local
  */
 gulp.task('webserver', function() {
-    gulp.src('public')
+    gulp.src('./public/')
         .pipe(webserver({
-        livereload: true,
-        directoryListing: true,
-        open: true
-    }));
+            livereload: {
+                enable: true,
+                filter: function(fileName) {
+                    if (fileName.match(/.map$/)) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+            }
+        }
+    ));
 });
 
 /**
@@ -59,7 +68,7 @@ gulp.task('lessCompile', () => {
         .pipe(csslint())
         .pipe(csslint.formatter())
         .pipe(sourcemaps.write('maps', {
-            mapSources: (sourcePath) => `../../maps/${sourcePath}`
+            mapSources: (sourcePath) => `./maps/${sourcePath}`
         }))
         .pipe(gulp.dest('./public/assets/css'));
 });
@@ -78,7 +87,7 @@ gulp.task('scriptsBuild', () => {
         .pipe(jshint.reporter())
         .pipe(uglify())
         .pipe(sourcemaps.write('maps', {
-            mapSources: (sourcePath) => `../../maps/${sourcePath}`
+            mapSources: (sourcePath) => `./maps/${sourcePath}`
         }))
         .pipe(gulp.dest('./public/assets/js'));
 });
@@ -92,7 +101,7 @@ gulp.task('compressVendorJS', (cb) => {
         .pipe(concat("vendors.min.js"))
         .pipe(uglify())
         .pipe(sourcemaps.write('maps', {
-            mapSources: (sourcePath) => `../../maps/${sourcePath}`
+            mapSources: (sourcePath) => `./maps/${sourcePath}`
         }))
         .pipe(gulp.dest('./public/assets/js'));
 });
@@ -106,7 +115,7 @@ gulp.task('compressVendorCSS', (cb) => {
         .pipe(concat("vendors.min.css"))
         .pipe(minifyCss())
         .pipe(sourcemaps.write('maps', {
-            mapSources: (sourcePath) => `../../maps/${sourcePath}`
+            mapSources: (sourcePath) => `./maps/${sourcePath}`
         }))
         .pipe(gulp.dest('./public/assets/css'));
 });

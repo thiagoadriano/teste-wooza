@@ -25,3 +25,13 @@ interface IAparelho{
     numeroParcelas: number;
     valorParcela: string;
 }
+
+interface IModelPlatform{
+    Plataforma: IPlatform;
+    Plano: IPlanoAparelho | IPlanoWifi;
+    Nome: string;
+    Email: string;
+    Nascimento: string;
+    CPF: string;
+    Telefone: string;
+}

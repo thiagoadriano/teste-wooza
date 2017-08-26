@@ -1,3 +1,6 @@
+/**
+ * Funções que serão rearoveitadas durante a vida do app
+ */
 namespace APPWZ {
     function UtilHelpers() {
 

@@ -1,3 +1,6 @@
+/**
+ * Recusro para mensagens de notificação sobre os fluxos para o usuário
+ */
 namespace APPWZ {
 
     MsgInfos.$inject = [];
