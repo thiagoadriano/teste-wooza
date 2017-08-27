@@ -15,7 +15,7 @@ const gulp = require('gulp'),
 
 const vendorsJS = [
         "./node_modules/angular/angular.js",
-        "./node_modules/angular-route/angular-route.js",
+        "./node_modules/angular-ui-router/release/angular-ui-router.js",
         "./node_modules/jquery/dist/jquery.js"
       ],
       vendorsCSS = [

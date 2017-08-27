@@ -4,7 +4,7 @@ namespace APPWZ {
     function appRun() { }
 
     angular
-        .module('AppWooza', ["ngRoute"])
+        .module('AppWooza', ["ui.router"])
         .constant("API", "http://private-59658d-celulardireto2017.apiary-mock.com/")
         .run(appRun);
-}
+}  

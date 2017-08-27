@@ -5,28 +5,33 @@ namespace APPWZ {
     PlatformsController.$inject = ["PlatformsService", "PlatformsModel"];
     function PlatformsController(PS:IServicePlatform, PM:IModel) {
         let vm = this;
-        vm.listPlatforms = [];
+        vm.listPlatforms = []; 
         vm.listPlan = [];
-        vm.Model = PM.model();
+        vm.Model = PM.model;
         vm.saveForm = saveForm;
-        vm.selecionaPlataforma = selecionaPlataforma;
-
+ 
         init();
 
-        /**
-         * Ação usada na seleção da plataforma para popular a model
-         * @param item {Objeto} - Plataforma selecionada
-         */
-        function selecionaPlataforma(item){
-            vm.Model.Plataforma = item;
-            console.log(vm.Model.Plataforma);
-        }
+
         /**
          * Salva os dados do formulário e on envia para o serviço
          * @param isValid {boolean} - indica se os valores do formulário foram preenchidos
          */
         function saveForm(isValid){
 
+        }
+
+        /**
+         * Função retorna o icone para o tipo especificado
+         * @param idclass classe de complementação para o icone
+         */
+        function getIcon(idclass:string):string{
+            let icon = {
+                computador: "laptop",
+                tablet: "tablet",
+                wifi: "connection"
+            }
+            return icon[idclass.toLowerCase().replace(/\-/g, '')];            
         }
 
         /**
@@ -44,6 +49,9 @@ namespace APPWZ {
          */
         function init(){
             PS.getPlatforms().then((result)=>{
+                result.map((item)=>{
+                    item.icone = getIcon(item.nome);
+                });
                 vm.listPlatforms = result;
             });
         };

@@ -1,0 +1,58 @@
+.content-platform {
+  display: flex;
+}
+.content-platform .box-platform {
+  cursor: pointer;
+  margin-bottom: 8px;
+  flex: 1;
+  text-align: center;
+}
+.content-platform .box-platform .label-platform {
+  width: 90%;
+  height: auto;
+  padding: 15px;
+  background: #fff;
+  border: #ccc solid 1px;
+  border-left: #3e7aa2 solid 8px;
+  border-radius: 5px;
+  min-height: 168px;
+  transition: all 0.3s ease-in;
+  position: relative;
+}
+.content-platform .box-platform .label-platform:hover {
+  background: #3e7aa2;
+  color: #fff;
+  transition: all 0.3s ease-out;
+}
+.content-platform .box-platform .input-platform {
+  display: none;
+}
+.content-platform .box-platform .input-platform:checked + .label-platform::before {
+  content: "\ea10";
+  font-family: 'icomoon';
+  background: darkgreen;
+  padding: 7px 10px;
+  border-radius: 50%;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: #fff;
+}
+.content-platform .box-platform [class^="icon-"] {
+  font-size: 48px;
+}
+.content-platform .box-platform .title-platform {
+  margin: 15px 0 5px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 26px;
+}
+.content-platform .box-platform .description-platform {
+  margin-bottom: 0;
+  cursor: pointer;
+  white-space: pre;
+  line-height: normal;
+  font-size: 16px;
+}
+
+/*# sourceMappingURL=../maps/modules/platform.css.map */

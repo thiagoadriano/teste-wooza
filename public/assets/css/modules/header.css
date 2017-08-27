@@ -1,0 +1,13 @@
+header {
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+}
+header #logo {
+  width: 291px;
+  height: 70px;
+  background: url(../img/logo-wooza.png);
+  display: block;
+  margin: 10px auto 20px;
+}
+
+/*# sourceMappingURL=../maps/modules/header.css.map */

@@ -1,3 +1,33 @@
+@font-face {
+  font-family: 'icomoon';
+  src: url('../fonts/icomoon.eot?fbky1n');
+  src: url('../fonts/icomoon.eot?fbky1n#iefix') format('embedded-opentype'), url('../fonts/icomoon.ttf?fbky1n') format('truetype'), url('../fonts/icomoon.woff?fbky1n') format('woff'), url('../fonts/icomoon.svg?fbky1n#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+[class^="icon-"],
+[class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-connection:before {
+  content: "\e91b";
+}
+.icon-laptop:before {
+  content: "\e957";
+}
+.icon-tablet:before {
+  content: "\e95a";
+}
 body {
   background: #f1f1f1;
   font-family: 'Josefin Sans', sans-serif;
@@ -10,6 +40,9 @@ h5,
 h6 {
   font-family: 'Bree Serif', serif;
 }
+.title-section {
+  margin: 65px auto 20px;
+}
 header {
   background: #fff;
   border-bottom: 1px solid #ccc;
@@ -21,28 +54,61 @@ header #logo {
   display: block;
   margin: 10px auto 20px;
 }
-.platform-platform {
+.content-platform {
+  display: flex;
+}
+.content-platform .box-platform {
   cursor: pointer;
-  padding: 10px 15px;
+  margin-bottom: 8px;
+  flex: 1;
+  text-align: center;
+}
+.content-platform .box-platform .label-platform {
+  width: 90%;
+  height: auto;
+  padding: 15px;
   background: #fff;
+  border: #ccc solid 1px;
   border-left: #3e7aa2 solid 8px;
   border-radius: 5px;
-  margin-bottom: 8px;
+  min-height: 168px;
+  transition: all 0.3s ease-in;
+  position: relative;
 }
-.platform-platform label {
-  width: 100%;
-  height: auto;
+.content-platform .box-platform .label-platform:hover {
+  background: #3e7aa2;
+  color: #fff;
+  transition: all 0.3s ease-out;
 }
-.platform-platform input {
+.content-platform .box-platform .input-platform {
   display: none;
 }
-.platform-platform .title-platform {
-  margin: 0 0 5px;
-  cursor: pointer;
+.content-platform .box-platform .input-platform:checked + .label-platform::before {
+  content: "\ea10";
+  font-family: 'icomoon';
+  background: darkgreen;
+  padding: 7px 10px;
+  border-radius: 50%;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: #fff;
 }
-.platform-platform .description-platform {
+.content-platform .box-platform [class^="icon-"] {
+  font-size: 48px;
+}
+.content-platform .box-platform .title-platform {
+  margin: 15px 0 5px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 26px;
+}
+.content-platform .box-platform .description-platform {
   margin-bottom: 0;
   cursor: pointer;
+  white-space: pre;
+  line-height: normal;
+  font-size: 16px;
 }
 
 /*# sourceMappingURL=maps/style.css.map */

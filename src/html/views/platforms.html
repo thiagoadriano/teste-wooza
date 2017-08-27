@@ -1,19 +1,10 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-            <h2>Escolha o seu produto:</h2>
+            <h2 class="text-center title-section">Escolha o seu produto:</h2>
         </div>
     </div>
-    <div class="col-md-4 col-sm-5 col-lg-3" >
-
-        <div class="platform-platform" ng:repeat="item in vm.listPlatforms">
-            <input type="radio" id="{{item.sku}}" name="plataform">
-            <label for="{{item.sku}}" ng-click="vm.selecionaPlataforma(item)">
-                <h4 class="title-platform">{{item.nome}}</h4>
-                <p class="description-platform">{{item.descricao}}</p>
-            </label>
-        </div>
-
+    <div class="col-md-12" >
+        <products list="vm.listPlatforms" model="vm.Model.Plataforma"></products>
     </div>
-    
 </div> 

@@ -14,14 +14,23 @@ namespace APPWZ {
         };
 
         /**
-         * Retorma a copiado model gerando uma nova instancia para esse objeto
+         * Limpa a model e cria nova referencia
          */
-        function getModel() {
-            return angular.copy(Model);
+        function _newModel() {
+            Model = {
+                Plataforma: "",
+                Plano: "",
+                Nome: "",
+                Email: "",
+                Nascimento: "",
+                CPF: "",
+                Telefone: ""
+            };
         }
 
         return {
-            model: getModel
+            model: Model,
+            newModel: _newModel
         };
     }
 
