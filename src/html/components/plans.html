@@ -1,0 +1,16 @@
+<div class="content-platform">
+    <div class="box-platform" ng:repeat="item in $ctrl.list">
+        <input type="radio" id="{{item.sku}}" class="input-platform" ng:checked="item.sku == $ctrl.plano.sku" name="plan">
+        <label for="{{item.sku}}" class="label-platform" ng-click="$ctrl.selectPlan(item)">
+            <h1 class="title-platform big-title">{{item.franquia}}</h1>
+            <h3 class="subtitle-platform">R$ {{item.valor}}</h3>
+            <div ng:if="item.aparelho">
+                <p class="description-platform"><strong>Acompanha o plano:</strong></p>                    
+                <p class="description-platform">Aparelho: {{item.aparelho.nome}}</p>
+                <p class="description-platform">Valor: R$ {{item.aparelho.valor}}</p>
+                <p class="description-platform" ng:if="item.aparelho.numeroParcelas > 1">Parcelas em até: {{item.aparelho.numeroParcelas}}</p>
+                <p class="description-platform" ng:if="item.aparelho.valorParcela != false">No valor de: R$ {{item.aparelho.valorParcela}}</p>
+            </div>
+        </label>
+    </div>
+</div> 

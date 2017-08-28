@@ -1,26 +1,32 @@
+/**
+ * Classe construtora do componente de produtos
+ */
 namespace APPWZ{
 
     var objComp = {
         bindings: {
-            list: "=",
-            model: "="
+            list: "="
         },
         templateUrl: "../components/product.html",
         controller: _controller
     };
 
-    _controller.$inject = ["$state"];
-    function _controller($state){
+    _controller.$inject = ["$state", "PlatformsModel"];
+    function _controller($state, PM){
         var vm = this;
+        
         /**
          * Ação usada na seleção da plataforma para popular a model
          * @param item {Objeto} - Plataforma selecionada
          */
         vm.selecionaPlataforma = function(item){
-            vm.model = item;
-            $state.go("plans", {idPlan: vm.model.sku});
+            PM.model.Plataforma = item;
+            $state.go("plans", {idPlan: item.sku});
         }
-       
+
+        vm.$postLink = function(){
+            vm.plataforma = PM.model.Plataforma;
+        }
 
     }   
 

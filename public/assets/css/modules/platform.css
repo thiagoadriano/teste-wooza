@@ -47,8 +47,17 @@
   cursor: pointer;
   font-size: 26px;
 }
+.content-platform .box-platform .title-platform.big-title {
+  font-size: 56px;
+  margin: 0;
+  line-height: normal;
+}
+.content-platform .box-platform .subtitle-platform {
+  margin: 0 0 10px;
+  cursor: pointer;
+}
 .content-platform .box-platform .description-platform {
-  margin-bottom: 0;
+  margin-bottom: 5px;
   cursor: pointer;
   white-space: pre;
   line-height: normal;

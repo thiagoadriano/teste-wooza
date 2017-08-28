@@ -33,7 +33,7 @@ namespace APPWZ {
         })
 
         $urlRouterProvider.otherwise("/platforms");
-        $locationProvider.html5Mode(true);
+        //$locationProvider.html5Mode(true);
     }
 
     angular

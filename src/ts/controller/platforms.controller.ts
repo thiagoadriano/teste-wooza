@@ -2,8 +2,8 @@
  * Controle da aplicação para a rota platforms
  */
 namespace APPWZ {
-    PlatformsController.$inject = ["PlatformsService", "PlatformsModel"];
-    function PlatformsController(PS:IServicePlatform, PM:IModel) {
+    PlatformsController.$inject = ["PlatformsService", "PlatformsModel", "UtilHelpers"];
+    function PlatformsController(PS:IServicePlatform, PM:IModel, Util) {
         let vm = this;
         vm.listPlatforms = []; 
         vm.listPlan = [];
@@ -11,7 +11,6 @@ namespace APPWZ {
         vm.saveForm = saveForm;
  
         init();
-
 
         /**
          * Salva os dados do formulário e on envia para o serviço
@@ -22,35 +21,12 @@ namespace APPWZ {
         }
 
         /**
-         * Função retorna o icone para o tipo especificado
-         * @param idclass classe de complementação para o icone
-         */
-        function getIcon(idclass:string):string{
-            let icon = {
-                computador: "laptop",
-                tablet: "tablet",
-                wifi: "connection"
-            }
-            return icon[idclass.toLowerCase().replace(/\-/g, '')];            
-        }
-
-        /**
-         * Busca os planos a partir do plano informado na model
-         */
-        function getPlan(){
-            PS.getPlan(vm.Model.Plataforma.sku)
-                .then((result)=>{
-                    vm.listPlan = result;
-                });
-        }
-
-        /**
          * Executa inicialmente o controller
          */
         function init(){
             PS.getPlatforms().then((result)=>{
                 result.map((item)=>{
-                    item.icone = getIcon(item.nome);
+                    item.icone = Util.getIcon(item.nome);
                 });
                 vm.listPlatforms = result;
             });

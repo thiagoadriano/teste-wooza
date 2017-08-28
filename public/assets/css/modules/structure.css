@@ -1,6 +1,21 @@
 body {
   background: #f1f1f1;
   font-family: 'Josefin Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+footer {
+  background: #333;
+  height: 10px;
+  flex: 1;
+  flex-basis: 2%;
+}
+header {
+  flex: 1;
+}
+main {
+  flex: 10;
+  flex-basis: 70%;
 }
 h1,
 h2,

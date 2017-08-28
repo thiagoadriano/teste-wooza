@@ -1,0 +1,20 @@
+.alertSystem {
+  position: absolute;
+  top: 23%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.alertSystem .list-alert {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.alertSystem .list-alert li {
+  margin: 0 0 8px;
+}
+.alertSystem .alert {
+  margin: 0;
+  background: rgba(231, 195, 195, 0.85);
+}
+
+/*# sourceMappingURL=../maps/modules/alertSystem.css.map */

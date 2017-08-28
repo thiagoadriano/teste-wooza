@@ -85,7 +85,7 @@ gulp.task('scriptsBuild', () => {
         }))
         .pipe(jshint())
         .pipe(jshint.reporter())
-        .pipe(uglify())
+        //.pipe(uglify())
         .pipe(sourcemaps.write('maps', {
             mapSources: (sourcePath) => `./maps/${sourcePath}`
         }))
