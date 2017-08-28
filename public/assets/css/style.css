@@ -62,9 +62,26 @@ h6 {
 .title-section {
   margin: 65px auto 20px;
 }
+.required {
+  border-left: darkred solid 8px;
+}
+.notRequired {
+  border-left: darkgreen solid 8px;
+}
+form input.form-control {
+  font-size: 16px;
+  padding: 8px 12px;
+  height: auto;
+  font-weight: 600;
+}
+form button[type="submit"] {
+  padding: 12px 0 10px;
+  font-size: 18px;
+  font-weight: 600;
+}
 .alertSystem {
   position: absolute;
-  top: 23%;
+  top: 110px;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -76,9 +93,13 @@ h6 {
 .alertSystem .list-alert li {
   margin: 0 0 8px;
 }
-.alertSystem .alert {
+.alertSystem .alert.alert-danger {
   margin: 0;
   background: rgba(231, 195, 195, 0.85);
+}
+.alertSystem .alert.alert-success {
+  margin: 0;
+  background: rgba(200, 229, 188, 0.85);
 }
 header {
   background: #fff;

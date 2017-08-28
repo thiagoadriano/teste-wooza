@@ -1,6 +1,6 @@
 .alertSystem {
   position: absolute;
-  top: 23%;
+  top: 110px;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -12,9 +12,13 @@
 .alertSystem .list-alert li {
   margin: 0 0 8px;
 }
-.alertSystem .alert {
+.alertSystem .alert.alert-danger {
   margin: 0;
   background: rgba(231, 195, 195, 0.85);
+}
+.alertSystem .alert.alert-success {
+  margin: 0;
+  background: rgba(200, 229, 188, 0.85);
 }
 
 /*# sourceMappingURL=../maps/modules/alertSystem.css.map */

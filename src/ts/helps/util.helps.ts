@@ -6,7 +6,10 @@ namespace APPWZ {
 
         return {
             searchItemId: searchItemId,
-            getIcon: getIcon
+            getIcon: getIcon,
+            maskCPF: maskCPF,
+            maskTel: maskTel,
+            maskData: maskData
         };
 
         /**
@@ -43,6 +46,42 @@ namespace APPWZ {
                 wifi: "connection"
             }
             return icon[idclass.toLowerCase().replace(/\-/g, '')];            
+        }
+
+
+        /**
+         * Função para colocar mascara no formato de cpf no valor digitado
+         * @param val {string} - texto que receberá o tratamento
+         */
+        function maskCPF(val){
+            val = val.replace(/\D/g,"")                    
+            val = val.replace(/(\d{3})(\d)/,"$1.$2")       
+            val = val.replace(/(\d{3})(\d)/,"$1.$2")       
+            val = val.replace(/(\d{3})(\d{1,2})$/,"$1-$2") 
+            return val
+        }
+
+        /**
+         * Função para colocar mascara no formato de Telefone no valor digitado
+         * @param val {string} - texto que receberá o tratamento
+         */
+        function maskTel(val){
+            val = val.replace(/\D/g,"");             
+            val = val.replace(/^(\d{2})(\d)/g,"($1) $2"); 
+            val = val.replace(/(\d)(\d{4})$/,"$1-$2");    
+            return val;
+        }
+
+        /**
+         * Função para colocar mascara no formato de Data no valor digitado
+         * @param val {string} - texto que receberá o tratamento
+         */
+        function maskData(val){
+            val = val.replace(/\D/g,"");                    
+            val = val.replace(/(\d{2})(\d)/,"$1/$2");
+            val = val.replace(/(\d{2})(\d)/,"$1/$2");
+            val = val.replace(/(\d{2})(\d{2})$/,"$1$2");
+            return val;
         }
 
            

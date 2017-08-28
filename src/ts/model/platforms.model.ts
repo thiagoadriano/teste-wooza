@@ -3,14 +3,13 @@
  */
 namespace APPWZ {
     function PlatformsModel() {
-        let Model = {
-            Plataforma: "",
-            Plano: "",
-            Nome: "",
-            Email: "",
-            Nascimento: "",
-            CPF: "",
-            Telefone: ""
+        let Model = {};
+
+        _newModel();
+        
+        return {
+            model: returnModel,
+            newModel: _newModel
         };
 
         /**
@@ -28,10 +27,12 @@ namespace APPWZ {
             };
         }
 
-        return {
-            model: Model,
-            newModel: _newModel
-        };
+        /**
+         * Retorna a Model para uso na aplicação
+         */
+        function returnModel(){
+            return Model;
+        }        
     }
 
     angular

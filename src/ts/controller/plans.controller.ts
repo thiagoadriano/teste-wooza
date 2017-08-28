@@ -6,7 +6,7 @@ namespace APPWZ {
     function PlansController(PlS, PM:IModel, $state) {
         let vm = this;
         vm.listPlans = [];
-        vm.Model = PM.model;
+        vm.Model = PM.model();
 
  
         init();
