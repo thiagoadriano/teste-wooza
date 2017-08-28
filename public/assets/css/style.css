@@ -1,0 +1,182 @@
+@font-face {
+  font-family: 'icomoon';
+  src: url('../fonts/icomoon.eot?kpyw4x');
+  src: url('../fonts/icomoon.eot?kpyw4x#iefix') format('embedded-opentype'), url('../fonts/icomoon.ttf?kpyw4x') format('truetype'), url('../fonts/icomoon.woff?kpyw4x') format('woff'), url('../fonts/icomoon.svg?kpyw4x#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+[class^="icon-"],
+[class*=" icon-"] {
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-connection:before {
+  content: "\e91b";
+}
+.icon-laptop:before {
+  content: "\e957";
+}
+.icon-tablet:before {
+  content: "\e95a";
+}
+.icon-undo2:before {
+  content: "\e967";
+}
+.icon-checkmark:before {
+  content: "\ea10";
+}
+body {
+  background: #f1f1f1;
+  font-family: 'Josefin Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+footer {
+  background: #333;
+  height: 10px;
+  flex: 1;
+  flex-basis: 2%;
+}
+header {
+  flex: 1;
+}
+main {
+  flex: 10;
+  flex-basis: 70%;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Bree Serif', serif;
+}
+.title-section {
+  margin: 65px auto 20px;
+}
+.required {
+  border-left: darkred solid 8px;
+}
+.notRequired {
+  border-left: darkgreen solid 8px;
+}
+form input.form-control {
+  font-size: 16px;
+  padding: 8px 12px;
+  height: auto;
+  font-weight: 600;
+}
+form button[type="submit"] {
+  padding: 12px 0 10px;
+  font-size: 18px;
+  font-weight: 600;
+}
+.alertSystem {
+  position: absolute;
+  top: 110px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000000;
+}
+.alertSystem .list-alert {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.alertSystem .list-alert li {
+  margin: 0 0 8px;
+}
+.alertSystem .alert.alert-danger {
+  margin: 0;
+  background: #e7c3c3;
+}
+.alertSystem .alert.alert-success {
+  margin: 0;
+  background: #c8e5bc;
+}
+header {
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+}
+header #logo {
+  width: 291px;
+  height: 70px;
+  background: url(../img/logo-wooza.png);
+  display: block;
+  margin: 10px auto 20px;
+}
+.content-platform {
+  display: flex;
+}
+.content-platform .box-platform {
+  cursor: pointer;
+  margin-bottom: 8px;
+  flex: 1;
+  text-align: center;
+}
+.content-platform .box-platform .label-platform {
+  width: 90%;
+  height: auto;
+  padding: 15px;
+  background: #fff;
+  border: #ccc solid 1px;
+  border-left: #3e7aa2 solid 8px;
+  border-radius: 5px;
+  min-height: 168px;
+  transition: all 0.3s ease-in;
+  position: relative;
+}
+.content-platform .box-platform .label-platform:hover {
+  background: #3e7aa2;
+  color: #fff;
+  transition: all 0.3s ease-out;
+}
+.content-platform .box-platform .input-platform {
+  display: none;
+}
+.content-platform .box-platform .input-platform:checked + .label-platform::before {
+  content: "\ea10";
+  font-family: 'icomoon';
+  background: darkgreen;
+  padding: 7px 10px;
+  border-radius: 50%;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: #fff;
+}
+.content-platform .box-platform [class^="icon-"] {
+  font-size: 48px;
+}
+.content-platform .box-platform .title-platform {
+  margin: 15px 0 5px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 26px;
+}
+.content-platform .box-platform .title-platform.big-title {
+  font-size: 56px;
+  margin: 0;
+  line-height: normal;
+}
+.content-platform .box-platform .subtitle-platform {
+  margin: 0 0 10px;
+  cursor: pointer;
+}
+.content-platform .box-platform .description-platform {
+  margin-bottom: 5px;
+  cursor: pointer;
+  white-space: pre;
+  line-height: normal;
+  font-size: 16px;
+}
+
+/*# sourceMappingURL=maps/style.css.map */

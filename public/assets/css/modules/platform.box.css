@@ -1,0 +1,25 @@
+.box-platform {
+  cursor: pointer;
+  padding: 10px 15px;
+  background: #fff;
+  border-left: #3e7aa2 solid 8px;
+  border-radius: 5px;
+  margin-bottom: 8px;
+}
+.box-platform label {
+  width: 100%;
+  height: auto;
+}
+.box-platform input {
+  display: none;
+}
+.box-platform .title-platform {
+  margin: 0 0 5px;
+  cursor: pointer;
+}
+.box-platform .description-platform {
+  margin-bottom: 0;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=../maps/modules/platform.box.css.map */

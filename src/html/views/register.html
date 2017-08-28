@@ -1,0 +1,52 @@
+<div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <button type="button" class="btn btn-link" ng:click="vm.goBack()">
+                   <strong> <span class="icon-undo2"></span> Trocar Plano </strong>
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center title-section">Informe os seus dados:</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" >
+                    <form name="dadosUsuario" ng:submit="vm.sendForm(dadosUsuario.$valid)" novalidate>
+
+                        <div class="form-group col-md-12">
+                            <label for="nome">Nome</label>
+                            <input type="text" class="form-control" id="nome" name="nome" maxlength="120" required ng:model="vm.Model.Nome" ng:class="{'required': dadosUsuario.nome.$error.required, 'notRequired': !dadosUsuario.nome.$error.required}">
+
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="email">Email</label>
+                            <input type="text" class="form-control" id="email" name="email" maxlength="80" required ng:model="vm.Model.Email" ng:class="{'required': dadosUsuario.email.$error.required, 'notRequired': !dadosUsuario.email.$error.required}">
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="nascimento">Nascimento</label>
+                            <input type="text" class="form-control" id="nascimento" maxlength="10" name="nascimento" required ng:model="vm.Model.Nascimento" ng:keyup="vm.maskData()" ng:class="{'required': dadosUsuario.nascimento.$error.required, 'notRequired': !dadosUsuario.nascimento.$error.required}">
+                        </div>
+                        
+                        <div class="form-group col-md-6">
+                            <label for="cpf">CPF</label>
+                            <input type="text" class="form-control" id="cpf" name="cpf" maxlength="14" required ng:model="vm.Model.CPF" ng:keyup="vm.maskCPF()" ng:class="{'required': dadosUsuario.cpf.$error.required, 'notRequired': !dadosUsuario.cpf.$error.required}">
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="telefone">Telefone <small>(com DDD)</small></label>
+                            <input type="text" class="form-control" id="telefone" name="telefone" required ng:model="vm.Model.Telefone" maxlength="15" ng:keyup="vm.maskTel()" ng:class="{'required': dadosUsuario.telefone.$error.required, 'notRequired': !dadosUsuario.telefone.$error.required}">
+                        </div>
+
+                        <div class="col-md-4 col-md-offset-4">
+                            <button type="submit" class="btn btn-success btn-block">
+                                <strong>Enviar Pedido</strong>
+                            </button>
+                        </div>
+                    </form>
+            </div>
+        </div>
+    </div> 
