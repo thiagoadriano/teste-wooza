@@ -48,10 +48,20 @@ namespace APPWZ {
                 invalid++;
             }
 
+            if(!CPF.validate(vm.Model.CPF)){
+                MsgInfos.danger("Este CPF é inválido.");
+                invalid++;
+            }
+
             if(!dataPattern.test(vm.Model.Nascimento)){
                 MsgInfos.danger("A data de Nascimento não está no padrão correto. Ex: 12/10/1980");
                 invalid++;                
             }
+
+            if(!moment(vm.Model.Nascimento, "DD/MM/YYYY").isValid()){
+                MsgInfos.danger("Esta data de nascimento é inválida.");
+                invalid++;
+            } 
 
             if(!emailPattern.test(vm.Model.Email)){
                 MsgInfos.danger("O Email não está no padrão correto. Ex: fulano@beltrano.com");

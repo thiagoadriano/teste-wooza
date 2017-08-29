@@ -11,3 +11,8 @@ Caso tenha os dois acima já instalados basta na pasta raiz do projeto abrir um 
 * Após a instalação dos módulos basta rodar o **gulp webserver**
 
 * Abrir o navegador na url **[http://localhost:8000](http://localhost:8000)**
+
+
+## Para Teste
+Execute o comando **gulp webservertest** e acesse o link **[http://localhost:8000/SpecRunner.html](http://localhost:8000/SpecRunner.html)** 
+para ver os testes executados

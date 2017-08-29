@@ -8,7 +8,7 @@ namespace APPWZ{
             list: "=",
             use: "@"
         },
-        templateUrl: "../components/products.html",
+        templateUrl: "components/products.html",
         controller: _controller
     };
 

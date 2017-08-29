@@ -16,13 +16,75 @@ const gulp = require('gulp'),
 const vendorsJS = [
         "./node_modules/angular/angular.js",
         "./node_modules/angular-ui-router/release/angular-ui-router.js",
-        "./node_modules/jquery/dist/jquery.js"
+        "./node_modules/jquery/dist/jquery.js",
+        "./node_modules/moment/min/moment-with-locales.min.js",
+        "./node_modules/gerador-validador-cpf/dist/js/CPF.js"
       ],
       vendorsCSS = [
         "./node_modules/bootstrap/dist/css/bootstrap.css",
         "./node_modules/bootstrap/dist/css/bootstrap-theme.css"        
+      ],
+      testesSpecsCore = [
+          "./node_modules/jasmine-core/lib/jasmine-core/jasmine.js",
+          "./node_modules/jasmine-core/lib/jasmine-core/jasmine-html.js",
+          "./node_modules/jasmine-core/lib/jasmine-core/boot.js"
       ];
 
+/**
+ * Copia o style do teste
+ */
+gulp.task("copycssSpec", () => {
+    return gulp.src("./node_modules/jasmine-core/lib/jasmine-core/jasmine.css")
+            .pipe(gulp.dest("./specs"))
+});
+
+/**
+ * Faz o bundle do core de testes
+ */
+gulp.task("jsTestSpec", () => {
+    return gulp.src(testesSpecsCore)
+            .pipe(concat("jasmine.js"))
+            .pipe(gulp.dest("./specs"))
+});
+
+/**
+ * Compila js da aplicação e passa para os teste
+ */
+gulp.task('scriptsBuildTests', () => {
+    return gulp.src('./src/ts/**/*.ts')
+    .pipe(sourcemaps.init())
+    .pipe(ts({
+        noImplicitAny: true,
+        outFile: 'app.min.js'
+    }))
+    .pipe(jshint())
+    .pipe(jshint.reporter())
+    .pipe(sourcemaps.write('maps', {
+        mapSources: (sourcePath) => `./maps/${sourcePath}`
+    }))
+    .pipe(gulp.dest("./specs"));
+});
+
+/**
+ * Prepara os vendors para testes
+ */
+gulp.task('compressVendorJSTests', (cb) => {
+    let files = Array.from(vendorsJS);
+    files.push("./node_modules/angular-mocks/angular-mocks.js");
+    return gulp.src(files)
+    .pipe(sourcemaps.init())
+    .pipe(concat("vendors.min.js"))
+    .pipe(uglify())
+    .pipe(sourcemaps.write('maps', {
+        mapSources: (sourcePath) => `./maps/${sourcePath}`
+    }))
+    .pipe(gulp.dest("./specs"));
+});
+
+/**
+ * Executa as tarefas para preparar as specs de teste
+*/
+gulp.task("testPrepare", ["copycssSpec", "jsTestSpec", "scriptsBuildTests", "compressVendorJSTests"]);
 
 /**
  * Tarefa para rodar um server local
@@ -32,6 +94,27 @@ gulp.task('webserver', function() {
         .pipe(webserver({
             livereload: {
                 enable: true,
+                filter: function(fileName) {
+                    if (fileName.match(/.map$/)) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+            }
+        }
+    ));
+});
+
+/**
+ * Tarefa para rodar um server local para teste
+ */
+gulp.task('webservertest', ["testPrepare"], function() {
+    gulp.src('./specs/')
+        .pipe(webserver({
+            livereload: {
+                enable: true,
+                fallback: 'SpecRunner.html',
                 filter: function(fileName) {
                     if (fileName.match(/.map$/)) {
                         return false;
@@ -77,19 +160,19 @@ gulp.task('lessCompile', () => {
  * Tarefa para compilar e comprimir os arquivos de typescript da aplicação
  */
 gulp.task('scriptsBuild', () => {
-    return gulp.src('./src/ts/**/*.ts')
-        .pipe(sourcemaps.init())
-        .pipe(ts({
-            noImplicitAny: true,
-            outFile: 'app.min.js'
-        }))
-        .pipe(jshint())
-        .pipe(jshint.reporter())
-        //.pipe(uglify())
-        .pipe(sourcemaps.write('maps', {
-            mapSources: (sourcePath) => `./maps/${sourcePath}`
-        }))
-        .pipe(gulp.dest('./public/assets/js'));
+    return  gulp.src('./src/ts/**/*.ts')
+                .pipe(sourcemaps.init())
+                .pipe(ts({
+                    noImplicitAny: true,
+                    outFile: 'app.min.js'
+                }))
+                .pipe(jshint())
+                .pipe(jshint.reporter())
+                .pipe(uglify())                
+                .pipe(sourcemaps.write('maps', {
+                    mapSources: (sourcePath) => `./maps/${sourcePath}`
+                }))
+                .pipe(gulp.dest("./public/assets/js"));
 });
 
 /**
@@ -97,13 +180,13 @@ gulp.task('scriptsBuild', () => {
  */
 gulp.task('compressVendorJS', (cb) => {
     return gulp.src(vendorsJS)
-        .pipe(sourcemaps.init())
-        .pipe(concat("vendors.min.js"))
-        .pipe(uglify())
-        .pipe(sourcemaps.write('maps', {
-            mapSources: (sourcePath) => `./maps/${sourcePath}`
-        }))
-        .pipe(gulp.dest('./public/assets/js'));
+                .pipe(sourcemaps.init())
+                .pipe(concat("vendors.min.js"))
+                .pipe(uglify())
+                .pipe(sourcemaps.write('maps', {
+                    mapSources: (sourcePath) => `./maps/${sourcePath}`
+                }))
+                .pipe(gulp.dest("./public/assets/js"));
 });
 
 /**
